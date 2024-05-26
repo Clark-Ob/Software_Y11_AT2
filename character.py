@@ -1,3 +1,6 @@
+import pygame
+from assets import GAME_ASSETS
+
 class Character:
     MAX_LEVEL = 50  # Maximum level a character can reach
     ATTRIBUTE_POINTS_PER_LEVEL = 3  # Number of attribute points gained per level
@@ -14,6 +17,20 @@ class Character:
         self.inventory = []  # Example empty list for character's inventory
         self.gold = 0  # Example starting value for character's gold
         self.attribute_points = 0  # Attribute points available to allocate
+        
+        # Drawing
+        self.images = {
+            'Warrior': pygame.image.load(GAME_ASSETS['warrior']).convert_alpha(),
+            'Mage': pygame.image.load(GAME_ASSETS['mage']).convert_alpha(),
+            'Rogue': pygame.image.load(GAME_ASSETS["rogue"]).convert_alpha()
+        }
+        self.type = None
+        self.position = [500, 500]
+
+        self.type = character_class
+        self.image = self.images[character_class]
+        self.image = pygame.transform.scale(self.image, (int(self.image.get_width() * 0.15), int(self.image.get_height() * 0.15)))
+
 
     def assign_attribute_points(self, attribute, points):
         # Ensure the attribute exists before assigning points
@@ -52,3 +69,7 @@ class Character:
             print(f"{self.name} takes {actual_damage} damage and has been defeated!")
         else:
             print(f"{self.name} takes {actual_damage} damage. Remaining hit points: {self.hit_points}")
+    
+    def draw(self):
+        pass
+        

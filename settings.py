@@ -8,6 +8,7 @@ class Settings:
         self.font = pygame.font.Font(None, 36)
         self.options = ["Volume", "Graphics", "Back"]
         self.selected_option = 0
+        self.controls = {"left": pygame.K_a, "right": pygame.K_d, "up": pygame.K_w, "down": pygame.K_s}
 
     def run(self):
         running = True
